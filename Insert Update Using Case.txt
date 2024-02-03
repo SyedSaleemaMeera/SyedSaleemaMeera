@@ -1,0 +1,110 @@
+https://colab.research.google.com/drive/1ne8i6_2gwv780af5H6PMj0e3bFrEEKMS?usp=sharing
+-----------------------------Variables and basics
+
+https://colab.research.google.com/drive/176ReYA7ow2JW_qEqWjLOA699oVsPRwJs?usp=sharing
+
+----------------------------------Strings
+
+https://colab.research.google.com/drive/1aRmTVqrZrFUvgG757zXlnalS2fOPfnv4?usp=sharing
+
+---------------------------------Strings Methods
+
+https://colab.research.google.com/drive/1PDDBsXCW3I_ZRB9b-J8CjNmortBVwWXy?usp=sharing
+
+---------------------------------Lists
+
+https://colab.research.google.com/drive/1BTE3iS_zguTtr_FqsW-utHl9mb5Wc1lD?usp=sharing
+
+---------------------------------Tuples and dictionaries
+
+https://colab.research.google.com/drive/1OJtmz46EdlCY4x91qXaE4tNK8cQYMmxZ?usp=sharing
+
+--------------------------------------dictionaries Select * from Student_Marks
+
+
+Select *,
+CASE
+When Score > 60 then 'Passed'
+When Score = 60 then 'Just Passed'
+When score < 60 then 'failed'
+end as "Results"
+From Student_Marks order by score desc
+end
+
+Select *from Student_Marks
+
+Update Student_Marks Set Results = 
+Case 
+When Score > 60 then 'Passed'
+When Score = 60 then 'Just Passed'
+When score < 60 then 'failed'
+end
+
+Select * from Student_Marks
+Select * from BackUP_Table
+
+
+
+Select * Into BackUP_Table
+from Student_Marks
+Delete from BackUP_Table 
+----------------------------------------
+Insert into BackUP_Table Select * from Student_Marks
+---------------------
+Insert into BackUP_Table (Id,Name) Select Id,Name From Student_Marks
+------------------------------------------------------------------------
+Insert into Placement_results (Id,Name,Placement_result)
+Select id,name, 
+Case Results
+When 'Passed' then 'Congrats Welcome to our company'
+When 'Just Passed' then 'We will get back to you'
+When 'Failed' then 'Take a course in Level Up'
+End
+from Student_marks
+
+
+
+Select * from Placement_results
+
+
+
+
+Create Table Placement_results
+(ID int,
+Name varchar(50),
+Placement_result varchar(50)
+)
+
+Select * from Placement_results
+
+
+Select * from BackUP_Table
+----------------------------------------------------
+--Drop
+--Delete
+--Truncate
+----------------------------------------------------
+--Transactions
+
+
+Begin Tran
+Update BackUP_Table Set Name = 'Manish'
+Commit
+Rollback
+Select * from BackUP_Table
+
+
+
+Begin Tran 
+Drop Table BackUP_Table
+
+Begin Tran 
+Truncate Table BackUp_Table where id = 2
+
+Rollback
+
+Begin Tran
+Delete From BackUp_Table where id = 2
+
+
+
